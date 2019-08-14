@@ -12,17 +12,18 @@ Nightwatch is a complete and integrated solution for end-to-end testing of web a
 [![Greenkeeper badge](https://badges.greenkeeper.io/nightwatchjs/nightwatch.svg)](https://greenkeeper.io/)
 ***
 
-## Nightwatch v1.0
-We're delighted to announce the release of __Nightwatch v1.0__. Please see the [upgrade guide](https://github.com/nightwatchjs/nightwatch/wiki/Migrating-to-Nightwatch-1.0) if you are upgrading from an earlier version. 
+## Nightwatch v1.1
+We're delighted to announce the release of __Nightwatch v1.1__. Please see the [upgrade guide](https://github.com/nightwatchjs/nightwatch/wiki/Migrating-to-Nightwatch-1.0) if you are upgrading from an pre v1.0 version. 
 
 ## 1. Install Nightwatch
 
-From NPM:
+__From [NPM](https://npmjs.com/package/nightwatch):__
 ```sh
 $ npm install nightwatch
 ```
+- add `-g` if you wish to install Nightwatch globally on your system.
 
-From GitHub:
+__From GitHub__:
 ```sh
 $ git clone https://github.com/nightwatchjs/nightwatch.git
 $ cd nightwatch
@@ -38,6 +39,16 @@ Nightwatch includes support for automatically managing the following services:
 - for running tests against the Chrome browser;
 - download url: [https://sites.google.com/a/chromium.org/chromedriver/downloads](https://sites.google.com/a/chromium.org/chromedriver/downloads).
 
+Starting with __version 75__, Chromedriver has [W3C Webdriver](https://www.w3.org/TR/webdriver1) protocol enabled by default. If you'd like to stick to the JSONWire for now adjust the `chromeOptions`:
+```js
+desiredCapabilities : {
+  browserName : 'chrome',
+  chromeOptions: {
+    w3c: false
+  }
+}
+```
+
 #### GeckoDriver
 - for running tests against the Mozilla Firefox browser;
 - download url: [https://github.com/mozilla/geckodriver/releases](https://github.com/mozilla/geckodriver/releases).
@@ -46,7 +57,7 @@ Nightwatch includes support for automatically managing the following services:
 - allows managing multiple browser configurations in one place and also to make use of the [Selenium Grid](https://github.com/SeleniumHQ/selenium/wiki/Grid2) service;
 - the selenium server jar file `selenium-server-standalone-3.x.x.jar` can be downloaded from the Selenium releases page: https://selenium-release.storage.googleapis.com/index.html
 
-It's important to note that, while the Selenium Server was required with older Nightwatch versions (`v0.9` and prior), starting with version `1.0` Selenium is no longer necessary.
+> It's important to note that, while the Selenium Server was required with older Nightwatch versions (`v0.9` and prior), starting with version `1.0` Selenium is no longer necessary.
 
 ## Setup Guides
 Specific WebDriver setup guides can be found on the [Docs website](http://nightwatchjs.org/gettingstarted/#browser-drivers-setup). Legacy Selenium drivers setup guides along with debugging instructions can be found on the [**Wiki**](https://github.com/nightwatchjs/nightwatch/wiki).

@@ -17,8 +17,7 @@ describe('testRunner', function() {
     this.server.on('listening', () => {
       fs.mkdir(emptyPath, function(err) {
         if (err) {
-          done(err);
-          return;
+          return done();
         }
         done();
       });
@@ -29,8 +28,7 @@ describe('testRunner', function() {
     CommandGlobals.afterEach.call(this, function() {
       fs.rmdir(emptyPath, function(err) {
         if (err) {
-          done(err);
-          return;
+          return done();
         }
         done();
       });
@@ -124,8 +122,11 @@ describe('testRunner', function() {
         start_process: true
       },
       output_folder: 'output',
-      silent: true,
+      silent: false,
       globals: {
+        waitForConditionPollInterval: 20,
+        waitForConditionTimeout: 50,
+        retryAssertionTimeout: 50,
         reporter: function () {
         }
       },
